@@ -16,6 +16,8 @@ def ocr(image_data):
     filename = os.path.join(temp_dir, f"{str(uuid.uuid4())}.png")
     try:
         image_bytes = base64.b64decode(image_data)
+        if len(image_bytes) == 0:
+            return {"error": "Image data is empty"}
         with open(filename, "wb") as f:
             f.write(image_bytes)
 
